@@ -124,11 +124,12 @@ body{position:fixed;inset:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-se
 
   var W,H,R,fs,rOut,S=1,ws=null,total=0;
   var mctx=document.createElement("canvas").getContext("2d");
-  function sLim(s){var b=Math.min(W,H)*(W<=700?.3125:.425);return Math.max(.6,9*total/(26*PI2*.97*b),Math.min(1.6,Math.min(W,H)*.46/b,s));}
+  function baseR(){return W<=700?Math.min(W,H)*.3125:Math.min(Math.min(W,H)*.3,300);}
+  function sLim(s){var b=baseR();return Math.max(.6,9*total/(26*PI2*.97*b),Math.min(1.6,Math.min(W,H)*.46/b,s));}
   function layout(){
     W=innerWidth;H=innerHeight;
     if(!ws){mctx.font="26px "+FONT;total=26*1.6;ws=chars.map(function(c){var m=mctx.measureText(c.ch).width;total+=m;return m;});}
-    S=sLim(S);R=Math.min(W,H)*(W<=700?.3125:.425)*S;
+    S=sLim(S);R=baseR()*S;
     fs=Math.min(26,26*PI2*R*.97/total);
     spinEl.style.fontSize=fs+"px";
     var cum=0;
