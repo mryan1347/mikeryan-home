@@ -197,7 +197,7 @@ body{position:fixed;inset:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-se
   // state
   var bx,by,vx=0,vy=0,mode="idle",spin=0,burstT=0,hard=0,ci=0;
   var grab={dx:0,dy:0,id:null,samples:[]},pts={},pinch=null;
-  var G=700,REST=.94,FRIC=.97,HARD=1100,POP=3000,gvx=0,gvy=G,tiltS=0,asked=false;
+  var G=700,REST=.94,FRIC=.97,HARD=1100,POP=5000,gvx=0,gvy=G,tiltS=0,asked=false;
   function buzz(p){try{navigator.vibrate&&navigator.vibrate(p);}catch(_){}}
   function motion(e){
     var a=e.accelerationIncludingGravity;if(!a||a.x==null||a.y==null)return;
